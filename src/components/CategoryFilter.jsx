@@ -1,13 +1,15 @@
-function CategoryFilter({ categories, activeCategory, onSelect }) {
+ function CategoryFilter({ categories, activeCategory, onSelect, counts }) {
   return (
-    <div className="category-filter">
+    <div className="category-sidebar">
       {categories.map((cat) => (
         <button
           key={cat}
-          className={`category-chip ${activeCategory === cat ? "active" : ""}`}
+          className={`category-sidebar-item ${activeCategory === cat ? "active" : ""}`}
           onClick={() => onSelect(cat)}
         >
-          {cat}
+          <span className="category-sidebar-icon">{cat.charAt(0)}</span>
+          <span className="category-sidebar-label">{cat}</span>
+          <span className="category-sidebar-count">{counts[cat] ?? 0}</span>
         </button>
       ))}
     </div>

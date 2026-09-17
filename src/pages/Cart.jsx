@@ -1,4 +1,5 @@
  import { Link } from "react-router-dom";
+import Reveal from "../components/Reveal";
 import { useCart } from "../context/CartContext";
 import CartItem from "../components/CartItem";
 
@@ -28,51 +29,56 @@ function Cart() {
 
   return (
     <section className="cart-page">
-      <div className="cart-page-header">
-        <p className="small-heading">YOUR CART</p>
-        <h1>Review your order</h1>
+      <Reveal className="cart-page-header-new">
+        <span className="menu-kicker">YOUR CART</span>
+        <h1>
+          Review your <em>order</em>
+        </h1>
         <p className="cart-page-subtext">
           Check your items before you head to checkout.
         </p>
-      </div>
+      </Reveal>
 
       <div className="cart-layout">
         <div className="cart-items-list">
-          {cart.map((item) => (
-            <CartItem
-              key={item.id}
-              item={item}
-              onIncrease={increaseQty}
-              onDecrease={decreaseQty}
-              onRemove={removeFromCart}
-            />
+          {cart.map((item, i) => (
+            <Reveal key={item.id} delay={i * 60}>
+              <CartItem
+                item={item}
+                onIncrease={increaseQty}
+                onDecrease={decreaseQty}
+                onRemove={removeFromCart}
+              />
+            </Reveal>
           ))}
         </div>
 
-        <div className="order-summary">
-          <h2>Order Summary</h2>
+        <Reveal delay={150} className="order-summary-wrapper">
+          <div className="order-summary">
+            <h2>Order Summary</h2>
 
-          <div className="summary-row">
-            <span>Subtotal</span>
-            <span>Rs. {subtotal}</span>
+            <div className="summary-row">
+              <span>Subtotal</span>
+              <span>Rs. {subtotal}</span>
+            </div>
+
+            <div className="summary-row">
+              <span>Service Fee</span>
+              <span>Rs. {SERVICE_FEE}</span>
+            </div>
+
+            <div className="summary-divider"></div>
+
+            <div className="summary-row summary-total">
+              <span>Total</span>
+              <span>Rs. {total}</span>
+            </div>
+
+            <Link to="/checkout" className="primary-button checkout-button">
+              Proceed to Checkout →
+            </Link>
           </div>
-
-          <div className="summary-row">
-            <span>Service Fee</span>
-            <span>Rs. {SERVICE_FEE}</span>
-          </div>
-
-          <div className="summary-divider"></div>
-
-          <div className="summary-row summary-total">
-            <span>Total</span>
-            <span>Rs. {total}</span>
-          </div>
-
-          <Link to="/checkout" className="primary-button checkout-button">
-            Proceed to Checkout
-          </Link>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

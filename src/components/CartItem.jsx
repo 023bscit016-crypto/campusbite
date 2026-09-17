@@ -1,24 +1,24 @@
-function CartItem({ item, onIncrease, onDecrease, onRemove }) {
+ function CartItem({ item, onIncrease, onDecrease, onRemove }) {
   const subtotal = item.price * item.qty;
 
   return (
-    <div className="cart-item">
-      <div className="cart-item-image">
+    <div className="cart-item-new">
+      <div className="cart-item-image-new">
         <img src={item.image} alt={item.name} />
       </div>
 
-      <div className="cart-item-details">
+      <div className="cart-item-details-new">
         <h3>{item.name}</h3>
         {item.description && (
-          <p className="cart-item-description">{item.description}</p>
+          <p className="cart-item-description-new">{item.description}</p>
         )}
-        <p className="cart-item-price">
-          Rs. {item.price} × {item.qty}
-        </p>
+        <button className="remove-button-new" onClick={() => onRemove(item.id)}>
+          Remove
+        </button>
       </div>
 
-      <div className="cart-item-actions">
-        <div className="qty-control">
+      <div className="cart-item-right">
+        <div className="qty-control-new">
           <button onClick={() => onDecrease(item.id)} aria-label="Decrease quantity">
             −
           </button>
@@ -27,12 +27,7 @@ function CartItem({ item, onIncrease, onDecrease, onRemove }) {
             +
           </button>
         </div>
-
-        <p className="cart-item-subtotal">Rs. {subtotal}</p>
-
-        <button className="remove-button" onClick={() => onRemove(item.id)}>
-          Remove
-        </button>
+        <p className="cart-item-subtotal-new">Rs. {subtotal}</p>
       </div>
     </div>
   );

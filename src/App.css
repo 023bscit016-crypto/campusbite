@@ -2184,3 +2184,597 @@ a {
     background: rgba(38, 117, 43, 0.25);
   }
 }
+/* =========================
+   MENU PAGE — SIDEBAR LAYOUT
+========================= */
+ 
+.menu-layout {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+  padding: 60px 7% 100px;
+  background: #f8faef;
+  min-height: 70vh;
+}
+
+.menu-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 100px;
+}
+
+.menu-sidebar-title {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #26752b;
+  margin: 0 0 16px;
+}
+
+.category-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.category-sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  text-align: left;
+  color: #30352e;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.category-sidebar-item:hover {
+  background: #f0f4e8;
+}
+
+.category-sidebar-item.active {
+  background: #26752b;
+  color: white;
+}
+
+.category-sidebar-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(38, 117, 43, 0.12);
+  color: #26752b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.category-sidebar-item.active .category-sidebar-icon {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.category-sidebar-label {
+  flex: 1;
+}
+
+.category-sidebar-count {
+  font-size: 12px;
+  color: #a3a99b;
+  font-weight: 600;
+}
+
+.category-sidebar-item.active .category-sidebar-count {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.menu-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.menu-editorial-header {
+  margin-bottom: 45px;
+  max-width: 700px;
+}
+
+.menu-kicker {
+  display: inline-block;
+  color: #26752b;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.menu-editorial-header h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 46px;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  margin: 0 0 16px;
+  line-height: 1.1;
+}
+
+.menu-editorial-header h1 em {
+  font-style: italic;
+  color: #26752b;
+}
+
+.menu-editorial-sub {
+  color: #656b61;
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 26px;
+}
+
+.menu-search-editorial {
+  display: flex;
+  align-items: center;
+  max-width: 420px;
+  background: white;
+  border: 2px solid #172015;
+  border-radius: 40px;
+  padding: 6px 6px 6px 22px;
+}
+
+.menu-search-editorial input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+  font-family: "Inter", sans-serif;
+}
+
+.menu-search-editorial input::placeholder {
+  color: #a3a99b;
+}
+
+.menu-search-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: #26752b;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: 0.2s ease;
+}
+
+.menu-search-btn:hover {
+  background: #1b5d20;
+}
+
+/* =========================
+   MENU FOOD GRID — EDITORIAL/MASONRY
+========================= */
+
+.menu-food-grid-editorial {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+ 
+
+/* =========================
+   FOOD CARD HOVER OVERLAY
+========================= */
+
+.food-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(20, 32, 20, 0.88), rgba(20, 32, 20, 0.1) 60%);
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.food-card:hover .food-hover-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.food-hover-overlay p {
+  color: white;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+
+/* =========================
+   FLY TO CART ANIMATION
+========================= */
+
+.fly-to-cart {
+  position: fixed;
+  width: 16px;
+  height: 16px;
+  background: #26752b;
+  border-radius: 50%;
+  z-index: 9999;
+  pointer-events: none;
+  transition: transform 0.6s cubic-bezier(0.3, 0.6, 0.3, 1), opacity 0.6s ease;
+}
+
+
+/* =========================
+   RESPONSIVE — MENU SIDEBAR
+========================= */
+
+@media (max-width: 1000px) {
+  .menu-layout {
+    flex-direction: column;
+  }
+
+  .menu-sidebar {
+    width: 100%;
+    position: static;
+  }
+
+  .category-sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .category-sidebar-item {
+    flex: 0 0 auto;
+  }
+
+  .menu-food-grid-editorial {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+   
+}
+
+@media (max-width: 600px) {
+  .menu-food-grid-editorial {
+    grid-template-columns: 1fr;
+  }
+
+  
+
+  .menu-editorial-header h1 {
+    font-size: 34px;
+  }
+}
+/* =========================
+   MY ORDERS — REDESIGN
+========================= */
+
+.orders-header {
+  max-width: 600px;
+  margin-bottom: 40px;
+}
+
+.orders-header h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin: 10px 0 10px;
+}
+
+.orders-header h1 em {
+  font-style: italic;
+  color: #26752b;
+}
+
+.orders-header-sub {
+  color: #656b61;
+  font-size: 15px;
+}
+
+.orders-list-new {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 800px;
+}
+
+.order-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: white;
+  border: 1px solid #e8ebe3;
+  border-radius: 16px;
+  padding: 18px 22px;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.order-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(20, 60, 20, 0.1);
+  border-color: #cfe0cc;
+}
+
+.order-card-thumbs {
+  display: flex;
+  flex-shrink: 0;
+  position: relative;
+  width: 76px;
+  height: 56px;
+}
+
+.order-card-thumb {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 0;
+}
+
+.order-card-thumb:nth-child(1) { left: 0; }
+.order-card-thumb:nth-child(2) { left: 20px; }
+.order-card-thumb:nth-child(3) { left: 40px; }
+
+.order-card-more {
+  position: absolute;
+  left: 40px;
+  top: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #172015;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid white;
+}
+
+.order-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.order-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.order-card-top strong {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 17px;
+}
+
+.order-card-items {
+  color: #656b61;
+  font-size: 13px;
+  margin: 0 0 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.order-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #a3a99b;
+}
+
+.order-card-dot {
+  color: #d6ddcf;
+}
+
+.order-card-total {
+  color: #26752b;
+  font-weight: 700;
+}
+
+.order-card-arrow {
+  font-size: 20px;
+  color: #a3a99b;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.order-card:hover .order-card-arrow {
+  transform: translateX(4px);
+  color: #26752b;
+}
+
+@media (max-width: 600px) {
+  .order-card {
+    flex-wrap: wrap;
+  }
+
+  .order-card-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .order-card-arrow {
+    display: none;
+  }
+}
+/* =========================
+   CART PAGE — REDESIGN
+========================= */
+
+.cart-page-header-new {
+  max-width: 600px;
+  margin-bottom: 40px;
+}
+
+.cart-page-header-new h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin: 10px 0 10px;
+}
+
+.cart-page-header-new h1 em {
+  font-style: italic;
+  color: #26752b;
+}
+
+.cart-item-new {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: white;
+  border: 1px solid #e8ebe3;
+  border-radius: 16px;
+  padding: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cart-item-new:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(20, 60, 20, 0.08);
+}
+
+.cart-item-image-new {
+  width: 84px;
+  height: 84px;
+  border-radius: 14px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.cart-item-image-new img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cart-item-details-new {
+  flex: 1;
+  min-width: 0;
+}
+
+.cart-item-details-new h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-family: "Fraunces", Georgia, serif;
+}
+
+.cart-item-description-new {
+  color: #747970;
+  font-size: 13px;
+  margin: 0 0 8px;
+  line-height: 1.4;
+}
+
+.remove-button-new {
+  border: none;
+  background: none;
+  color: #b23a3a;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 0;
+}
+
+.remove-button-new:hover {
+  text-decoration: underline;
+}
+
+.cart-item-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.qty-control-new {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid #d6ddcf;
+  border-radius: 20px;
+  padding: 6px 14px;
+  background: #f7f9f2;
+}
+
+.qty-control-new button {
+  border: none;
+  background: none;
+  font-size: 16px;
+  font-weight: 700;
+  color: #26752b;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+
+.qty-control-new button:active {
+  transform: scale(0.85);
+}
+
+.qty-control-new span {
+  font-size: 14px;
+  font-weight: 700;
+  min-width: 14px;
+  text-align: center;
+}
+
+.cart-item-subtotal-new {
+  font-weight: 700;
+  font-size: 15px;
+  margin: 0;
+  color: #172015;
+}
+
+.order-summary-wrapper {
+  position: sticky;
+  top: 100px;
+}
+
+.order-summary {
+  background: white;
+  border: 1px solid #e8ebe3;
+  border-radius: 18px;
+  padding: 26px;
+}
+
+.order-summary h2 {
+  font-family: "Fraunces", Georgia, serif;
+  margin: 0 0 20px;
+  font-size: 19px;
+}
+
+.checkout-button {
+  width: 100%;
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 20px;
+}
