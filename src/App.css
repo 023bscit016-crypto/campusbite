@@ -2886,3 +2886,128 @@ a {
     box-shadow: 0 0 0 6px rgba(38, 117, 43, 0);
   }
 }
+/* =========================
+   ORDER CONFIRMATION — TICKET STYLE
+========================= */
+
+.confirmation-page {
+  display: flex;
+  justify-content: center;
+  padding: 60px 7% 100px;
+  background: #f8faef;
+  min-height: 70vh;
+}
+
+.ticket-wrapper {
+  position: relative;
+  max-width: 480px;
+  width: 100%;
+  animation: confirmationRise 0.5s ease;
+  filter: drop-shadow(0 20px 45px rgba(20, 60, 20, 0.14));
+}
+
+.ticket-stamp {
+  position: absolute;
+  top: -22px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: #26752b;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: bold;
+  transform: rotate(12deg);
+  border: 3px dashed white;
+  box-shadow: 0 8px 16px rgba(20, 60, 20, 0.3);
+  z-index: 5;
+  animation: checkPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s both;
+}
+
+.ticket-top {
+  background: white;
+  border-radius: 20px 20px 0 0;
+  padding: 40px 36px 30px;
+  text-align: center;
+}
+
+.ticket-top h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 28px;
+  margin: 0 0 8px;
+  letter-spacing: -0.5px;
+}
+
+.ticket-order-id {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin: 20px 0;
+}
+
+.ticket-order-id span {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #a3a99b;
+  font-weight: 700;
+}
+
+.ticket-order-id strong {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 26px;
+  color: #26752b;
+  letter-spacing: 1px;
+}
+
+.ticket-perforation {
+  position: relative;
+  height: 2px;
+  background-image: linear-gradient(to right, #d6ddcf 60%, transparent 0%);
+  background-size: 14px 2px;
+  background-repeat: repeat-x;
+}
+
+.ticket-notch {
+  position: absolute;
+  top: -10px;
+  width: 20px;
+  height: 20px;
+  background: #f8faef;
+  border-radius: 50%;
+}
+
+.ticket-notch-left {
+  left: -10px;
+}
+
+.ticket-notch-right {
+  right: -10px;
+}
+
+.ticket-bottom {
+  background: white;
+  border-radius: 0 0 20px 20px;
+  padding: 30px 36px 36px;
+}
+
+.confirmation-summary-receipt {
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin-bottom: 25px;
+}
+
+.confirmation-summary-receipt h2 {
+  font-family: "Fraunces", Georgia, serif;
+}
+
+.summary-divider-dashed {
+  height: 0;
+  border-top: 2px dashed #d6ddcf;
+  background: none;
+}
