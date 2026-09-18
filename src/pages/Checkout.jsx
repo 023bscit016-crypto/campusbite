@@ -1,19 +1,14 @@
-import { useState } from "react";
+ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useOrders } from "../context/OrderContext";
+import Reveal from "../components/Reveal";
 
 const SERVICE_FEE = 10;
 
 const TIME_SLOTS = [
-  "12:00 PM",
-  "12:15 PM",
-  "12:30 PM",
-  "12:45 PM",
-  "1:00 PM",
-  "1:15 PM",
-  "1:30 PM",
-  "1:45 PM",
+  "12:00 PM", "12:15 PM", "12:30 PM", "12:45 PM",
+  "1:00 PM", "1:15 PM", "1:30 PM", "1:45 PM",
 ];
 
 function Checkout() {
@@ -65,18 +60,19 @@ function Checkout() {
 
   return (
     <section className="checkout-page">
-      <div className="checkout-header">
-        <p className="small-heading">CHECKOUT</p>
-        <h1>Confirm your pickup order</h1>
+      <Reveal className="checkout-header-new">
+        <span className="menu-kicker">CHECKOUT</span>
+        <h1>
+          Confirm your <em>pickup</em>
+        </h1>
         <p className="checkout-subtext">
           Review your order and choose when you'll collect it.
         </p>
-      </div>
+      </Reveal>
 
       <div className="checkout-layout">
         <div className="checkout-main">
-          {/* PICKUP INFO */}
-          <div className="checkout-card">
+          <Reveal className="checkout-card" delay={60}>
             <h2>Pickup Information</h2>
             <div className="pickup-location">
               <span className="pickup-label">Pickup Location</span>
@@ -101,10 +97,9 @@ function Checkout() {
             {timeError && (
               <p className="field-error">Please select a pickup time to continue.</p>
             )}
-          </div>
+          </Reveal>
 
-          {/* ORDER NOTE */}
-          <div className="checkout-card">
+          <Reveal className="checkout-card" delay={120}>
             <h2>Order Note (optional)</h2>
             <textarea
               className="order-note-input"
@@ -113,47 +108,46 @@ function Checkout() {
               onChange={(e) => setNote(e.target.value)}
               rows={3}
             />
-          </div>
+          </Reveal>
         </div>
 
-        {/* ORDER SUMMARY */}
-        <div className="order-summary">
-          <h2>Order Summary</h2>
+        <Reveal delay={180} className="order-summary-wrapper">
+          <div className="order-summary">
+            <h2>Order Summary</h2>
 
-          <div className="checkout-items">
-            {cart.map((item) => (
-              <div className="checkout-item-row" key={item.id}>
-                <span>
-                  {item.name} × {item.qty}
-                </span>
-                <span>Rs. {item.price * item.qty}</span>
-              </div>
-            ))}
+            <div className="checkout-items">
+              {cart.map((item) => (
+                <div className="checkout-item-row" key={item.id}>
+                  <span>{item.name} × {item.qty}</span>
+                  <span>Rs. {item.price * item.qty}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="summary-divider"></div>
+
+            <div className="summary-row">
+              <span>Subtotal</span>
+              <span>Rs. {subtotal}</span>
+            </div>
+
+            <div className="summary-row">
+              <span>Service Fee</span>
+              <span>Rs. {SERVICE_FEE}</span>
+            </div>
+
+            <div className="summary-divider"></div>
+
+            <div className="summary-row summary-total">
+              <span>Total</span>
+              <span>Rs. {total}</span>
+            </div>
+
+            <button className="primary-button checkout-button" onClick={handlePlaceOrder}>
+              Place Order →
+            </button>
           </div>
-
-          <div className="summary-divider"></div>
-
-          <div className="summary-row">
-            <span>Subtotal</span>
-            <span>Rs. {subtotal}</span>
-          </div>
-
-          <div className="summary-row">
-            <span>Service Fee</span>
-            <span>Rs. {SERVICE_FEE}</span>
-          </div>
-
-          <div className="summary-divider"></div>
-
-          <div className="summary-row summary-total">
-            <span>Total</span>
-            <span>Rs. {total}</span>
-          </div>
-
-          <button className="primary-button checkout-button" onClick={handlePlaceOrder}>
-            Place Order
-          </button>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

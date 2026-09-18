@@ -80,7 +80,7 @@ function Orders() {
                 </div>
               </div>
 
-              <span className="order-card-arrow">→</span>
+           
             </Link>
           </Reveal>
         ))}
